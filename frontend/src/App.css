@@ -44,3 +44,8 @@ form button:hover{
   border: 1px solid #fff;
   color: teal;
 }
+.users-list{
+  display: flex;
+  flex-direction: column;
+  gap: 0.75em;
+}
