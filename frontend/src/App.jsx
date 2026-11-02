@@ -1,4 +1,5 @@
 import './App.css'
+
 function App() {
   return (
     <div className="app">
@@ -10,9 +11,7 @@ function App() {
         <button type="submit">Cadastrar</button>
       </form>
       <div className="users-list">
-        <p>Usuário cadastrado</p>
-        <p>Usuário cadastrado</p>
-        <p>Usuário cadastrado</p>
+        
       </div>
     </div>
   );
