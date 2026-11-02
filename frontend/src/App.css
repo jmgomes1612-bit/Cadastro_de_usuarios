@@ -34,6 +34,13 @@ form input::placeholder {
 }
 form button {
   background-image: linear-gradient(90deg, teal, turquoise);
-  border: turquoise;
+  border:1px solid turquoise;
   font-weight: 800;
+  cursor: pointer;
+  transition: 0.4s;
+}
+form button:hover{
+  background: #fff;
+  border: 1px solid #fff;
+  color: teal;
 }
