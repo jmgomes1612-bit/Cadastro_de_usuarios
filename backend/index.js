@@ -24,17 +24,17 @@ const users = [
 
   {
     nome: "João",
-    curos: "Informática",
-    idade: "18",
+    curso: "Informática",
+    sala: "18",
   },
 ];
 
 const userSchema = new mongoose.Schema(
-    {
-        nome: {type : String, required : true},
-        email: {type : String, required : true, unique: true},
-        idade: {type}
-    }
+  {
+    nome: {type: String, required: true},
+    email: {type: String, required: true, unique: true},
+    idade: {type: Number, required: true}
+  }
 )
 // Rota para buscar os usuários já cadastrados
 
@@ -45,7 +45,9 @@ app.get("/Usuarios", (request, response) => {
 // Rota para criar usuário
 
 app.post("/Usuarios", (request, response) => {
-  users.push(request.body);
+  console.log(request.body)
+  users.push(request.body)
+  response.json(users)
 });
 
 app.listen(port, () => {
