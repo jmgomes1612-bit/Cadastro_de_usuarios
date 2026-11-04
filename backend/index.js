@@ -15,7 +15,7 @@ mongoose
     console.log("Erro ao conectar com o MongoDB");
   });
 
-const users = [
+/* const users = [
   {
     nome: "sandra",
     curso: "Informática",
@@ -27,27 +27,39 @@ const users = [
     curso: "Informática",
     sala: "18",
   },
-];
+]; */
+
+// Formato (Schema) dos dados do usuário no BD
 
 const userSchema = new mongoose.Schema(
   {
-    nome: {type: String, required: true},
-    email: {type: String, required: true, unique: true},
-    idade: {type: Number, required: true}
-  }, {timestamps: true}
-)
+    nome: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    idade: { type: Number, required: true },
+  },
+  { timestamps: true },
+);
+
+// Usuário modelado ou formatado
+// 'Usuario' é relacionado ao caminho do banco de dados isto é a tabela usuário
+
+const Usuario = mongoose.model("Usuario", userSchema);
+
 // Rota para buscar os usuários já cadastrados
 
-app.get("/Usuarios", (request, response) => {
-  response.json(users);
+app.get("/Usuarios", async (request, response) => {
+  const usuariosDoBanco = await Usuario.find()
+  response.json(usuariosDoBanco)
+  console.log(usuariosDoBanco)
+
 });
 
 // Rota para criar usuário
 
-app.post("/Usuarios", (request, response) => {
-  console.log(request.body)
-  users.push(request.body)
-  response.json(users)
+app.post("/Usuarios", async (request, response) => {
+   const usuarioCriado = await Usuario.create(request.body);
+  console.log(usuarioCriado)
+  response.json(usuarioCriado)
 });
 
 app.listen(port, () => {
