@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
+import axios from "axios"
 import UserCard from "./Components/UserCard";
 
 function App() {
@@ -8,6 +9,16 @@ function App() {
   const [email, setEmail] = useState("");
   const [users, setUsers] = useState([]);
 
+  useEffect( () => {
+    async function buscarUsuarios(){
+      const resposta = await axios.get('http://localhost:3000/Usuarios')
+      console.log(resposta)
+    }
+    buscarUsuarios()
+  
+  }, [])
+
+  
   function handleSubmit(event) {
     event.preventDefault();
 
