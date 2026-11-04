@@ -1,9 +1,10 @@
 import { useState } from "react";
 import "./App.css";
 import UserCard from "./Components/UserCard";
+
 function App() {
   const [name, setName] = useState("");
-  const [age, setage] = useState("");
+  const [age, setAge] = useState("");
   const [email, setEmail] = useState("");
   const [users, setUsers] = useState([]);
 
@@ -49,7 +50,7 @@ function App() {
           placeholder="age"
           value={age}
           required
-          onChange={(event) => setage(event.target.value)}
+          onChange={(event) => setAge(event.target.value)}
         />
 
         <button type="submit">Cadastrar</button>
