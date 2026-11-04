@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema(
     nome: {type: String, required: true},
     email: {type: String, required: true, unique: true},
     idade: {type: Number, required: true}
-  }
+  }, {timestamps: true}
 )
 // Rota para buscar os usuários já cadastrados
 
