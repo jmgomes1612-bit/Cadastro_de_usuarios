@@ -10,22 +10,26 @@ function App() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-  async function searchUsers() {
-      const response = await axios.get('http://localhost:3000/Usuarios')
-      setUsers(response.data)    
-  }
+    async function searchUsers() {
+      const response = await axios.get("http://localhost:3000/Usuarios");
+      setUsers(response.data);
+    }
 
-  searchUsers();
-}, []);
+    searchUsers();
+  }, []);
+
+  async function handleSubmit() {
 
 
-  function handleSubmit(event) {
-    event.preventDefault();
+    await axios.post("http://localhost:3000/Usuarios", {
+      nome: name,
+      email,
+      idade: age,
+    });
   }
   return (
     <div className="app">
       <h1>Cadastro de usuários</h1>
-      <h2>Total de utilizadores: {users.length}</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -55,7 +59,7 @@ function App() {
       </form>
       <div className="users-list">
         {users.map((user) => (
-          <UserCard key = {user._id} user = {user}/>
+          <UserCard key={user._id} user={user} />
         ))}
       </div>
     </div>
