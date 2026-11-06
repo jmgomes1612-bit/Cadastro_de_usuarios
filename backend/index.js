@@ -1,6 +1,8 @@
 import express, { request, response } from "express";
 import mongoose from "mongoose";
+import cors from "cors"
 const app = express();
+app.use(cors())
 app.use(express.json());
 const port = 3000;
 
@@ -11,7 +13,7 @@ mongoose
   .then(() => {
     console.log("A conexão com o banco de dados mongoose foi um sucesso!");
   })
-  .catch((error) => {
+  .catch(() => {
     console.log("Erro ao conectar com o MongoDB");
   });
 
@@ -57,7 +59,7 @@ app.get("/Usuarios", async (request, response) => {
 // Rota para criar usuário
 
 app.post("/Usuarios", async (request, response) => {
-   const usuarioCriado = await Usuario.create(request.body);
+  const usuarioCriado = await Usuario.create(request.body);
   console.log(usuarioCriado)
   response.json(usuarioCriado)
 });
