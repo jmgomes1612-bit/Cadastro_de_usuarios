@@ -15,7 +15,7 @@
     sans-serif;
 }
 body {
+  min-height: 100vh;
   box-sizing: border-box;
-  max-height: 100vh;
   background: linear-gradient(90deg, rgb(5, 23, 34), rgb(1, 31, 49));
 }
